@@ -31,11 +31,31 @@
 **/
 
 function sum(num) {
-  return new promise (resolve, reject){
-    function getsum() {
-
-    }
+  return new Promise(function(resolve, reject){
+      if (typeof num === "number"){
+          resolve(num);
+      } else{
+          reject(Error("Not number"));
+      }
   }
+)}
+
+
+  function getSum(num) {
+  sum(num).then(function(result){
+      console.log(result);
+      return result + 2;
+  }).then(function(result){
+      console.log(result);
+      return result + 2;
+  }).then(function(result){
+      console.log(result);
+      return result + 2;
+  }).then(function(result){
+      console.log(result)
+  }).catch(function(e){
+      console.log(e);
+  })
 }
 
 
@@ -50,27 +70,3 @@ getSum(1);
 getSum(2);
 //when argument is not a number
 getSum('car');
-
-
-// function sum(num) {
-//   return new Promise((resolve, reject) => {
-//     if (typeof num === 'number') {
-//       resolve(num)
-//     } else {
-//       reject('Not number')
-//     }
-//   })
-// }
-//  function getSum(num) {
-//   return sum(num)
-//    .then(num => {
-//     for (var i = 1; i <= 4; i++) {
-//       var li = document.createElement('li')
-//       li.textContent = num;
-//       document.querySelector('ul').appendChild(li)
-//       console.log(num);
-//       num += 2;
-//     }
-//   })
-//   .catch(error => console.log("It failed! Error:", error))
-// }
